@@ -35,7 +35,9 @@
 
   <div th:each="update : ${updates}" class="card shadow-sm">
     <div class="card-body">
-      <h5 class="card-title" th:text="${update.title}">Update Title</h5>
+      <h5 class="card-title">
+        <a th:href="@{'/updates/' + ${update.id}}" th:text="${update.title}"></a>
+      </h5>
       <p>
         <span class="badge bg-primary category-badge" th:text="${update.category}">Category</span>
         <small class="text-muted" th:text="${#temporals.format(update.createdAt, 'dd MMM yyyy HH:mm')}">Date</small>

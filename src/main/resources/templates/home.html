@@ -62,7 +62,9 @@
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/logout}">Logout</a>
+                    <form th:action="@{/logout}" method="post" style="display:inline;">
+                        <button type="submit" class="nav-link btn btn-link" style="padding: 0; margin: 0;">Logout</button>
+                    </form>
                 </li>
             </ul>
         </div>
@@ -74,7 +76,7 @@
     <div class="hero-section text-center">
         <h1>Welcome to the Government Transparency Dashboard</h1>
         <p>Stay informed about how funds are used, poverty efforts, and national updates.</p>
-        <a href="#" class="btn btn-custom mt-3">View Latest Updates</a>
+        <a th:href="@{/updates}" class="btn btn-custom mt-3">View Latest Updates</a>
     </div>
 
     <!-- Example Card Section -->
@@ -100,10 +102,15 @@
     </div>
 </div>
 
+
+
 <footer>
     &copy; 2025 Government Transparency App | Built with Spring Boot & Bootstrap
 </footer>
 
 <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
 </body>
+
+
+
 </html>

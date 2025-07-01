@@ -1,24 +1,30 @@
 package io.github.cyprog.government_transparency_app.controller;
 
 import io.github.cyprog.government_transparency_app.entity.Update;
-import io.github.cyprog.government_transparency_app.repository.UpdateRepository;
+import io.github.cyprog.government_transparency_app.service.UpdateService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 @RequiredArgsConstructor
 public class UpdateController {
 
-    private final UpdateRepository updateRepository;
+    private final UpdateService updateService;
 
     @GetMapping("/updates")
     public String listUpdates(Model model) {
-        List<Update> updates = updateRepository.findAll();
-        model.addAttribute("updates", updates);
-        return "updates";  // Will create updates.html next
+        model.addAttribute("updates", updateService.getAllUpdates());
+        return "updates";
+    }
+
+    @GetMapping("/updates/{id}")
+    public String viewUpdate(@PathVariable Long id, Model model) {
+        Update update = updateService.getUpdateById(id);
+        model.addAttribute("update", update);
+        return "update-details";  // New HTML page you will create next
     }
 }
+

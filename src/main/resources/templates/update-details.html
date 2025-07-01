@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${update.title}">Update Details</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+
+<div class="container mt-4">
+    <h2 th:text="${update.title}">Update Title</h2>
+    <p>
+        <span class="badge bg-primary" th:text="${update.category}">Category</span>
+        <small class="text-muted" th:text="${#temporals.format(update.createdAt, 'dd MMM yyyy HH:mm')}">Date</small>
+    </p>
+    <p th:text="${update.content}">Full update content here...</p>
+
+    <a th:href="@{/updates}" class="btn btn-secondary">Back to Updates</a>
+    <a th:href="@{/home}" class="btn btn-outline-primary">Home</a>
+</div>
+
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
+ml>

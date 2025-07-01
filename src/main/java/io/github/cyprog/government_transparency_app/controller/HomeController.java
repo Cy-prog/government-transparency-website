@@ -7,7 +7,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class HomeController {
 
     @GetMapping("/")
-    public String home() {
-        return "home";  // maps to home.html in templates folder
+    public String root() {
+        return "home";  // This serves home.html for root "/"
+    }
+
+    @GetMapping("/home")
+    public String homePage() {
+        return "home";  // This serves home.html for "/home"
     }
 }
+
