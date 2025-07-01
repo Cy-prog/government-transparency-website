@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Government Updates | Transparency App</title>
+  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .card {
+      margin-bottom: 1rem;
+      border-radius: 0.5rem;
+    }
+    .card-title {
+      color: #2c3e50;
+    }
+    .card-text {
+      color: #34495e;
+    }
+    .category-badge {
+      font-size: 0.75rem;
+      padding: 0.3em 0.6em;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container mt-4">
+  <h2 class="mb-4 text-center">Latest Government Updates</h2>
+
+  <div th:if="${#lists.isEmpty(updates)}">
+    <p class="text-center">No updates available at the moment.</p>
+  </div>
+
+  <div th:each="update : ${updates}" class="card shadow-sm">
+    <div class="card-body">
+      <h5 class="card-title" th:text="${update.title}">Update Title</h5>
+      <p>
+        <span class="badge bg-primary category-badge" th:text="${update.category}">Category</span>
+        <small class="text-muted" th:text="${#temporals.format(update.createdAt, 'dd MMM yyyy HH:mm')}">Date</small>
+      </p>
+      <p class="card-text" th:text="${update.content}">Update content goes here...</p>
+    </div>
+  </div>
+
+  <div class="mt-4 text-center">
+    <a th:href="@{/home}" class="btn btn-secondary">Back to Home</a>
+  </div>
+</div>
+
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
+l>
