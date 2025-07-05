@@ -21,4 +21,9 @@ public class UpdateService {
         return updateRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Update not found with id: " + id));
     }
+
+
+    public void save(Update update) {
+        updateRepository.save(update);
+    }
 }

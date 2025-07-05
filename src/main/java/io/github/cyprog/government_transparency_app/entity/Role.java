@@ -3,6 +3,8 @@ package io.github.cyprog.government_transparency_app.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+
+
 @Entity
 @Table(name = "roles")
 @Getter
@@ -17,4 +19,6 @@ public class Role {
 
     @Column(nullable = false, unique = true)
     private String name;
+
+
 }

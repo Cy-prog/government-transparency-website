@@ -1,5 +1,6 @@
 package io.github.cyprog.government_transparency_app.service;
 
+import io.github.cyprog.government_transparency_app.entity.Role;
 import io.github.cyprog.government_transparency_app.entity.Update;
 import io.github.cyprog.government_transparency_app.entity.User;
 import io.github.cyprog.government_transparency_app.repository.UpdateRepository;
@@ -30,32 +31,21 @@ public class CustomUserDetailsService implements UserDetailsService {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("No user found with email: " + email));
 
+        System.out.println("Roles: " + user.getRoles().stream()
+                .map(Role::getName)
+                .collect(Collectors.toList()));
+
+
+
         return org.springframework.security.core.userdetails.User.builder()
                 .username(user.getEmail())
                 .password(user.getPassword())
                 .authorities(user.getRoles().stream()
                         .map(role -> new SimpleGrantedAuthority(role.getName()))
                         .collect(Collectors.toList()))
-                .accountExpired(false)
-                .accountLocked(false)
-                .credentialsExpired(false)
-                .disabled(false)
+
                 .build();
     }
 
-    @Service
-    @RequiredArgsConstructor
-    public static class UpdateService {
 
-        private final UpdateRepository updateRepository;
-
-        public List<Update> getAllUpdates() {
-            return updateRepository.findAll();
-        }
-
-        public Update getUpdateById(Long id) {
-            return updateRepository.findById(id)
-                    .orElseThrow(() -> new IllegalArgumentException("Update not found with id: " + id));
-        }
-    }
 }

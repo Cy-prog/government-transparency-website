@@ -5,7 +5,7 @@ package io.github.cyprog.government_transparency_app.controller;
 import io.github.cyprog.government_transparency_app.dto.UserDto;
 import io.github.cyprog.government_transparency_app.service.UserService;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,9 +14,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
+@RequiredArgsConstructor
 public class RegistrationController {
 
-    @Autowired
+
     private UserService userService;
 
     @GetMapping("/register")

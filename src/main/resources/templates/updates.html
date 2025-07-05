@@ -46,6 +46,11 @@
     </div>
   </div>
 
+  <div th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
+    <a th:href="@{/updates/new}" class="btn btn-primary">Add New Update</a>
+  </div>
+
+
   <div class="mt-4 text-center">
     <a th:href="@{/home}" class="btn btn-secondary">Back to Home</a>
   </div>

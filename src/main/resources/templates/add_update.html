@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Government Update</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2 class="mb-4">Add New Update</h2>
+
+    <form th:action="@{/updates/save}" th:object="${update}" method="post">
+        <div class="mb-3">
+            <label class="form-label">Title:</label>
+            <input type="text" th:field="*{title}" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Category:</label>
+            <input type="text" th:field="*{category}" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Content:</label>
+            <textarea th:field="*{content}" class="form-control" rows="4" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-success">Save Update</button>
+        <a th:href="@{/templates/updates}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
