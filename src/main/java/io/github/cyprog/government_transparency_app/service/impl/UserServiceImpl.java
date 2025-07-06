@@ -7,7 +7,6 @@ import io.github.cyprog.government_transparency_app.repository.RoleRepository;
 import io.github.cyprog.government_transparency_app.repository.UserRepository;
 import io.github.cyprog.government_transparency_app.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
